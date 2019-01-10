@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "lib": ["es6", "dom"],
+    "module": "umd",
+    "noEmit": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "target": "es6",
+    "types": []
+  },
+  "files": ["MusicKit.d.ts", "MusicKit-test.ts"]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "musickit-typescript",
+  "version": "0.1.0",
+  "description": "Typescript type definitions for MusicKit",
+  "repository": "wsmd/musickit-typescript",
+  "types": "./MusicKit.d.ts",
+  "bugs": {
+    "url": "https://github.com/wsmd/musickit-typescript/issues"
+  },
+  "scripts": {
+    "test": "tsc"
+  },
+  "author": "Waseem Dahman <dwaseem@icloud.com>",
+  "license": "MIT",
+  "keywords": [
+    "Apple",
+    "MusicKit.d.ts",
+    "MusicKit",
+    "types",
+    "typescript",
+    "typings"
+  ],
+  "devDependencies": {
+    "typescript": "^3.2.2"
+  }
+}
