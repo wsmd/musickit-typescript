@@ -98,51 +98,75 @@ state = MusicKit.PlaybackStates.completed;
 
 // API
 
-const mapArray = (array: []) => array.map(() => {});
-
-api.activities(['ID']).then(mapArray);
-api.activity('ID').then(() => {});
+api.activities(['ID']).then();
+api.activity('ID').then();
 
 api.addToLibrary(['ID']);
 
-api.album('ID').then(() => {});
-api.albums(['ID']).then(mapArray);
+api.album('ID').then();
+api.albums(['ID']).then();
 
-api.appleCurator('ID').then(() => {});
-api.appleCurators(['ID']).then(mapArray);
+api.appleCurator('ID').then();
+api.appleCurators(['ID']).then();
 
-api.artist('ID').then(() => {});
-api.artists(['ID']).then(mapArray);
+api.artist('ID').then();
+api.artists(['ID']).then();
 
-api.charts(['ID']).then(mapArray);
+api.charts(['ID']).then();
 
-api.curator('ID').then(() => {});
-api.curators(['ID']).then(mapArray);
+api.curator('ID').then();
+api.curators(['ID']).then();
 
-api.genre('ID').then(() => {});
-api.genres(['ID']).then(mapArray);
+api.genre('ID').then();
+api.genres(['ID']).then();
 
-api.historyHeavyRotation(['ID']).then(mapArray);
+api.historyHeavyRotation(['ID']).then();
 
-api.musicVideo('ID').then(() => {});
-api.musicVideos(['ID']).then(mapArray);
+api.musicVideo('ID').then();
+api.musicVideos(['ID']).then();
 
-api.playlist('ID').then(() => {});
-api.playlists(['ID']).then(mapArray);
+api.playlist('ID').then();
+api.playlists(['ID']).then();
 
-api.recentPlayed(['ID']).then(mapArray);
+api.recentPlayed(['ID']).then();
 
-api.recommendation('ID').then(() => {});
-api.recommendations(['ID']).then(mapArray);
+api.recommendation('ID').then();
+api.recommendations(['ID']).then();
 
-api.search('ID').then(mapArray);
-api.searchHints('ID').then(mapArray);
+api.search('ID').then();
+api.searchHints('ID').then();
 
-api.song('ID').then(() => {});
-api.songs(['ID']).then(mapArray);
+api.song('ID').then();
+api.songs(['ID']).then();
 
-api.station('ID').then(() => {});
-api.stations(['ID']).then(mapArray);
+api.station('ID').then();
+api.stations(['ID']).then();
 
-api.storefront('ID').then(() => {});
-api.storefronts(['ID']).then(mapArray);
+api.storefront('ID').then();
+api.storefronts(['ID']).then();
+
+// Library
+
+let library: MusicKit.Library = api.library;
+
+library.album('ID').then();
+library.albums(['ID']).then();
+library.albums(null).then();
+
+library.artist('ID').then();
+library.artists(['ID']).then();
+library.artists(null).then();
+
+library.musicVideo('ID').then();
+library.musicVideos(['ID']).then();
+library.musicVideos(null).then();
+
+library.playlist('ID').then();
+library.playlists(['ID']).then();
+library.playlists(null).then();
+
+library.search('term').then();
+
+library.song('ID').then();
+library.songs(['ID']).then();
+library.songs(null).then();
