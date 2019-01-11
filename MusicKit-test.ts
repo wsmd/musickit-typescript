@@ -95,3 +95,54 @@ state = MusicKit.PlaybackStates.seeking;
 state = MusicKit.PlaybackStates.waiting;
 state = MusicKit.PlaybackStates.stalled;
 state = MusicKit.PlaybackStates.completed;
+
+// API
+
+const mapArray = (array: []) => array.map(() => {});
+
+api.activities(['ID']).then(mapArray);
+api.activity('ID').then(() => {});
+
+api.addToLibrary(['ID']);
+
+api.album('ID').then(() => {});
+api.albums(['ID']).then(mapArray);
+
+api.appleCurator('ID').then(() => {});
+api.appleCurators(['ID']).then(mapArray);
+
+api.artist('ID').then(() => {});
+api.artists(['ID']).then(mapArray);
+
+api.charts(['ID']).then(mapArray);
+
+api.curator('ID').then(() => {});
+api.curators(['ID']).then(mapArray);
+
+api.genre('ID').then(() => {});
+api.genres(['ID']).then(mapArray);
+
+api.historyHeavyRotation(['ID']).then(mapArray);
+
+api.musicVideo('ID').then(() => {});
+api.musicVideos(['ID']).then(mapArray);
+
+api.playlist('ID').then(() => {});
+api.playlists(['ID']).then(mapArray);
+
+api.recentPlayed(['ID']).then(mapArray);
+
+api.recommendation('ID').then(() => {});
+api.recommendations(['ID']).then(mapArray);
+
+api.search('ID').then(mapArray);
+api.searchHints('ID').then(mapArray);
+
+api.song('ID').then(() => {});
+api.songs(['ID']).then(mapArray);
+
+api.station('ID').then(() => {});
+api.stations(['ID']).then(mapArray);
+
+api.storefront('ID').then(() => {});
+api.storefronts(['ID']).then(mapArray);
