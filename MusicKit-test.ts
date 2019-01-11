@@ -68,8 +68,8 @@ player.shuffleMode = 1;
 player.volume < 1;
 player.volume = 0;
 
-let item: MusicKit.MediaItem;
-item = player.nowPlayingItem;
+let nowPlayingItem: MusicKit.MediaItem;
+nowPlayingItem = player.nowPlayingItem;
 
 player.addEventListener('EVENT_NAME', () => {});
 player.removeEventListener('EVENT_NAME', () => {});
@@ -170,3 +170,34 @@ library.search('term').then();
 library.song('ID').then();
 library.songs(['ID']).then();
 library.songs(null).then();
+
+// MediaItem
+
+const item: MusicKit.MediaItem = new MusicKit.MediaItem({
+  attributes: {},
+  type: 'playlist',
+});
+
+item.prepareToPlay().then();
+item.albumInfo;
+item.albumName;
+item.artistName;
+item.artwork;
+item.artworkURL;
+item.attributes;
+item.contentRating;
+item.discNumber;
+item.id;
+item.info;
+item.isExplicitItem;
+item.isPlayable;
+item.isPreparedToPlay;
+item.isrc;
+item.playbackDuration;
+item.playlistArtworkURL;
+item.playlistName;
+item.previewURL;
+item.releaseDate;
+item.title;
+item.trackNumber;
+item.type;
