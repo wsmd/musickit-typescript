@@ -226,3 +226,38 @@ const firstItem = queue.item(0);
 if (firstItem) {
   console.log(firstItem.title);
 }
+
+function errorMessage(error: MusicKit.MKError) {
+  const messages = {
+    [MusicKit.MKError.ACCESS_DENIED]: "you don't have permission",
+    [MusicKit.MKError.AUTHORIZATION_ERROR]: 'authorization was rejected',
+    [MusicKit.MKError.CONFIGURATION_ERROR]: 'configuration error',
+    [MusicKit.MKError.CONTENT_RESTRICTED]: 'content is restricted',
+    [MusicKit.MKError.INVALID_ARGUMENTS]: 'parameters provided are invalid',
+    [MusicKit.MKError.MEDIA_CERTIFICATE]: 'VM certificate could not be applied',
+    [MusicKit.MKError.MEDIA_DESCRIPTOR]: 'the media item descriptor is invalid',
+    [MusicKit.MKError.MEDIA_KEY]: 'DRM key could not be generated',
+    [MusicKit.MKError.MEDIA_LICENSE]: ' DRM license error',
+    [MusicKit.MKError.MEDIA_PLAYBACK]: 'media playback error',
+    [MusicKit.MKError.MEDIA_SESSION]: 'EME session could not be created',
+    [MusicKit.MKError.NETWORK_ERROR]: 'network error',
+    [MusicKit.MKError.NOT_FOUND]: 'resource was not found',
+    [MusicKit.MKError.QUOTA_EXCEEDED]: ' exceeded the api quota',
+    [MusicKit.MKError.SERVER_ERROR]: 'server error',
+    [MusicKit.MKError.SERVICE_UNAVAILABLE]: 'service could not be reached',
+    [MusicKit.MKError.SUBSCRIPTION_ERROR]: 'subscription has expired',
+    [MusicKit.MKError.UNKNOWN_ERROR]: 'unknown error',
+    [MusicKit.MKError.UNSUPPORTED_ERROR]: 'operation is not supported',
+  };
+  return messages[error.errorCode] || 'something went wrong!';
+}
+
+async function getArtists() {
+  try {
+    await MusicKit.getInstance().api.library.artist('');
+  } catch (err) {
+    console.log(errorMessage(err));
+  }
+}
+
+MusicKit.errors.map(error => error.errorCode);
