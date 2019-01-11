@@ -120,11 +120,11 @@ declare namespace MusicKit {
     /**
      * No description available.
      */
-    playLater(options: SetQueueOptions): Promise<any>;
+    playLater(options: SetQueueOptions): Promise<void>;
     /**
      * No description available.
      */
-    playNext(options: SetQueueOptions): void;
+    playNext(options: SetQueueOptions): Promise<void>;
     /**
      * Removes an event listener for a MusicKit instance by name.
      *
@@ -784,14 +784,108 @@ declare namespace MusicKit {
   }
 
   /**
-   * @todo
+   * An array of media items to be played.
    */
-  interface SetQueueOptions {}
+  interface Queue {
+    /**
+     * A Boolean value indicating whether the queue has no items.
+     */
+    readonly isEmpty: boolean;
+    /**
+     * An array of all the media items in the queue.
+     */
+    readonly items: MediaItem[];
+    /**
+     * The number of items in the queue.
+     */
+    readonly length: number;
+    /**
+     * The next playable media item in the queue.
+     */
+    readonly nextPlayableItem?: MediaItem;
+    /**
+     * The current queue position.
+     */
+    readonly position: number;
+    /**
+     * The previous playable media item in the queue.
+     */
+    readonly previousPlayableItem?: MediaItem;
+
+    /**
+     * Add an event listener for a MusicKit queue by name.
+     *
+     * @param name The name of the event.
+     * @param callback The callback function to remove.
+     */
+    addEventListener(name: string, callback: () => any): void;
+    /**
+     * Inserts the media items defined by the queue descriptor after the last
+     * media item in the current queue.
+     */
+    append(descriptor: descriptor): void;
+    /**
+     * Returns the index in the playback queue for a media item descriptor.
+     *
+     * @param descriptor A descriptor can be an instance of the MusicKit.MediaItem
+     * class, or a string identifier.
+     */
+    indexForItem(descriptor: descriptor): number;
+    /**
+     * Returns the media item located in the indicated array index.
+     */
+    item(index: number): MediaItem | null | undefined;
+    /**
+     * Inserts the media items defined by the queue descriptor into the current
+     * queue immediately after the currently playing media item.
+     */
+    prepend(descriptor: any): void;
+    /**
+     * Removes an event listener for a MusicKit queue by name.
+     *
+     * @param name The name of the event.
+     * @callback callback The callback function to remove.
+     */
+    removeEventListener(name: string, callback: () => any): void;
+  }
 
   /**
-   * @todo
+   * The options to use when setting a music player's playback queue.
    */
-  interface Queue {}
+  interface SetQueueOptions {
+    /**
+     * The catalog album used to set a music player's playback queue.
+     */
+    album?: string;
+    /**
+     * The media items used to set a music player's playback queue.
+     */
+    items: descriptor[];
+    /**
+     * The parameters used to set a music player's playback queue.
+     */
+    parameters?: QueryParameters;
+    /**
+     * The playlist used to set a music player's playback queue.
+     */
+    playlist?: string;
+    /**
+     * The song used to set a music player's playback queue.
+     */
+    song?: string;
+    /**
+     * The songs used to set a music player's playback queue.
+     */
+    songs?: string[];
+    /**
+     * The start position for a set playback queue.
+     */
+    startPosition?: number;
+    /**
+     * A content URL used to set a music player's playback queue.
+     */
+    url?: string;
+  }
 
   /**
    * The playback bit rate of the music player.

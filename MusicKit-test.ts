@@ -34,12 +34,6 @@ music.addToLibrary(1, 'type').then(() => {});
 music.authorize().then(token => token.charCodeAt(0));
 music.changeToMediaAtIndex(1).then(position => position > 1);
 music.play().then(position => position > 1);
-/**
- * @todo SetQueueOptions
- */
-music.playLater({}).then();
-music.playNext({});
-const queue: MusicKit.Queue = music.setQueue({});
 
 music.removeEventListener('test', () => {});
 music.seekToTime(12345).then(() => {});
@@ -201,3 +195,34 @@ item.releaseDate;
 item.title;
 item.trackNumber;
 item.type;
+
+// Queue
+
+const items = [new MusicKit.MediaItem()];
+music.playLater({ items }).then();
+music.playNext({ items });
+music.setQueue({ items, startPosition: 0 }).then(queue => {
+  if (queue.nextPlayableItem) {
+    console.log(queue.nextPlayableItem.title);
+  }
+  if (queue.previousPlayableItem) {
+    console.log(queue.previousPlayableItem);
+  }
+});
+
+const queue: MusicKit.Queue = music.player.queue;
+queue.isEmpty === false;
+queue.items.map(item => item.title);
+queue.length > 1;
+queue.position > 0;
+queue.addEventListener('EVENT', () => {});
+queue.removeEventListener('EVENT', () => {});
+
+queue.append(item);
+queue.prepend(item);
+queue.indexForItem(item) > 0;
+
+const firstItem = queue.item(0);
+if (firstItem) {
+  console.log(firstItem.title);
+}
