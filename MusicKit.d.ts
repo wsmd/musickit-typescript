@@ -714,7 +714,7 @@ declare namespace MusicKit {
     /**
      * The artwork object for the media item.
      */
-    readonly artwork: any;
+    readonly artwork: Artwork;
     /**
      * The artwork image for the media item.
      */
@@ -888,12 +888,135 @@ declare namespace MusicKit {
   }
 
   /**
-   * The playback bit rate of the music player.
+   * Returns a formatted artwork URL.
+   *
+   * @param artwork An artwork resource object.
+   * @param height The desired artwork height.
+   * @param width the desired artwork width.
    */
-  enum PlaybackBitrate {
-    HIGH = 256,
-    STANDARD = 64,
-  }
+  function formatArtworkURL(artwork: Artwork, height: number, width: number): string;
+  /**
+   * Returns an object with milliseconds formatted into hours and minutes.
+   */
+  function formattedMilliseconds(milliseconds: number): FormattedPlaybackDuration;
+  /**
+   * Returns an object with seconds formatted into hours and minutes.
+   */
+  function formattedSeconds(seconds: number): FormattedPlaybackDuration;
+  /**
+   * Generates Apple Music web player markup.
+   *
+   * @param url The iTunes URL for the Apple Music content.
+   * @param options The object containing the height and width of the player.
+   */
+  function generateEmbedCode(url: string, options: EmbedOptions): string;
+  function formatMediaTime(seconds: number, separator: string): string;
+
+  /**
+   * A dictionary containing events for a MusicKit instance.
+   */
+  const Events: {
+    /**
+     * A notification name indicating a change in the authorization status.
+     */
+    authorizationStatusDidChange: string;
+    /**
+     * A notification name indicating an upcoming change in the authorization status.
+     */
+    authorizationStatusWillChange: string;
+    /**
+     * A notification name indicating a user is eligible for a subscribe view.
+     */
+    eligibleForSubscribeView: string;
+    /**
+     * A notification name indicating MusicKit JS is loaded.
+     */
+    loaded: string;
+    /**
+     * A notification name indicating the player has obtained enough data for
+     * playback to start.
+     */
+    mediaCanPlay: string;
+    /**
+     * A notification name indicating that the currently-playing media item has
+     * changed.
+     */
+    mediaItemDidChange: string;
+    /**
+     * A notification name indicating the currently-playing media item is about
+     * to change.
+     */
+    mediaItemWillChange: string;
+    /**
+     * A notification name indicating that the player has thrown an error during
+     * playback.
+     */
+    mediaPlaybackError: string;
+    /**
+     * A notification name indicating the media item's metadata has finished
+     * loading.
+     */
+    metadataDidChange: string;
+    /**
+     * A notification indicating the playback bit rate has changed.
+     */
+    playbackBitrateDidChange: string;
+    /**
+     * A notification name indicating the current playback duration changed.
+     */
+    playbackDurationDidChange: string;
+    /**
+     * A notification name indicating the current playback progress changed.
+     */
+    playbackProgressDidChange: string;
+    /**
+     * A notification indicating the playback state has changed.
+     */
+    playbackStateDidChange: string;
+    /**
+     * A notification indicating the playback state is about to be changed.
+     */
+    playbackStateWillChange: string;
+    /**
+     * A notification indicating that a playback target's availability has changed.
+     */
+    playbackTargetAvailableDidChange: string;
+    /**
+     * A notification name indicating the current playback time has changed.
+     */
+    playbackTimeDidChange: string;
+    /**
+     * A notification name indicating the player volume has changed.
+     */
+    playbackVolumeDidChange: string;
+    /**
+     * A notification name indicating the playback has started in another context
+     * on your domain, and the current player has stopped playback.
+     */
+    primaryPlayerDidChange: string;
+    /**
+     * A notification name indicating that the items in the current playback
+     * queue have changed.
+     */
+    queueItemsDidChange: string;
+    /**
+     * A notification name indicating that the current queue position has changed.
+     */
+    queuePositionDidChange: string;
+    /**
+     * A notification name indicating a change in the storefront country code.
+     */
+    storefrontCountryCodeDidChange: string;
+    /**
+     * A notification name indicating that the device's inferred storefront
+     * identifier changed.
+     */
+    storefrontIdentifierDidChange: string;
+    /**
+     * A notification name indicating the user token changed.
+     */
+    userTokenDidChange: string;
+  };
 
   /**
    * A class that describes an error that may occur when using MusicKit JS,
@@ -909,8 +1032,8 @@ declare namespace MusicKit {
      */
     description?: string;
     /**
-     * Error code indicating that you don't have permission to access the endpoint,
-     * media item, or content.
+     * Error code indicating that you don't have permission to access the
+     * endpoint, media item, or content.
      */
     static ACCESS_DENIED: string;
     /**
@@ -988,6 +1111,14 @@ declare namespace MusicKit {
   const errors: MKError[];
 
   /**
+   * The playback bit rate of the music player.
+   */
+  enum PlaybackBitrate {
+    HIGH = 256,
+    STANDARD = 64,
+  }
+
+  /**
    * The playback states of the music player.
    */
   enum PlaybackStates {
@@ -1029,6 +1160,25 @@ declare namespace MusicKit {
    */
   type Resource = {
     [key: string]: any;
+  };
+
+  /**
+   * An object that represents artwork.
+   */
+  type Artwork = {
+    bgColor: string;
+    height: number;
+    width: number;
+    textColor1: string;
+    textColor2: string;
+    textColor3: string;
+    textColor4: string;
+    url: string;
+  };
+
+  type EmbedOptions = {
+    height: number | string;
+    width: number | string;
   };
 
   type AddToLibraryParameters = any;

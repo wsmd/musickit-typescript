@@ -29,13 +29,13 @@ const api: MusicKit.API = music.api;
 const playbackState: MusicKit.PlaybackStates = music.playbackState;
 const player: MusicKit.Player = music.player;
 
-music.addEventListener('test', () => {});
+music.addEventListener(MusicKit.Events.mediaItemDidChange, () => {});
 music.addToLibrary(1, 'type').then(() => {});
 music.authorize().then(token => token.charCodeAt(0));
 music.changeToMediaAtIndex(1).then(position => position > 1);
 music.play().then(position => position > 1);
 
-music.removeEventListener('test', () => {});
+music.removeEventListener(MusicKit.Events.mediaItemDidChange, () => {});
 music.seekToTime(12345).then(() => {});
 music.skipToNextItem().then(position => position > 1);
 music.skipToPreviousItem().then(position => position > 1);
@@ -65,8 +65,8 @@ player.volume = 0;
 let nowPlayingItem: MusicKit.MediaItem;
 nowPlayingItem = player.nowPlayingItem;
 
-player.addEventListener('EVENT_NAME', () => {});
-player.removeEventListener('EVENT_NAME', () => {});
+player.addEventListener(MusicKit.Events.playbackTimeDidChange, () => {});
+player.removeEventListener(MusicKit.Events.playbackProgressDidChange, () => {});
 player.changeToMediaAtIndex(1);
 player.changeToMediaItem('descriptor').then(position => position > 1);
 player.mute();
@@ -215,8 +215,8 @@ queue.isEmpty === false;
 queue.items.map(item => item.title);
 queue.length > 1;
 queue.position > 0;
-queue.addEventListener('EVENT', () => {});
-queue.removeEventListener('EVENT', () => {});
+queue.addEventListener(MusicKit.Events.queueItemsDidChange, () => {});
+queue.removeEventListener(MusicKit.Events.queuePositionDidChange, () => {});
 
 queue.append(item);
 queue.prepend(item);
@@ -226,6 +226,8 @@ const firstItem = queue.item(0);
 if (firstItem) {
   console.log(firstItem.title);
 }
+
+// Errors
 
 function errorMessage(error: MusicKit.MKError) {
   const messages = {
@@ -261,3 +263,13 @@ async function getArtists() {
 }
 
 MusicKit.errors.map(error => error.errorCode);
+
+// Utilities
+
+MusicKit.formatArtworkURL(player.nowPlayingItem.artwork, 300, 300);
+MusicKit.formatArtworkURL(item.attributes.artwork, 300, 300);
+MusicKit.formatArtworkURL({ url: 'path/to/artwork' } as MusicKit.Artwork, 300, 300);
+
+const { hours, minutes } = MusicKit.formattedMilliseconds(3000);
+
+MusicKit.generateEmbedCode('path/to/content', { width: '400px', height: '400px' });
