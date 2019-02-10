@@ -8,5 +8,5 @@
     "target": "es6",
     "types": []
   },
-  "files": ["MusicKit.d.ts", "MusicKit-test.ts"]
+  "files": ["types/index.d.ts", "test/MusicKit-test.ts"]
 }
