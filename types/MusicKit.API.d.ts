@@ -256,20 +256,20 @@ declare namespace MusicKit {
    * https://developer.apple.com/documentation/applemusicapi/apple_music_api_objects
    */
 
-  type Resource = {
+  interface Resource {
     [key: string]: any;
-  };
+  }
 
   type AddToLibraryParameters = any;
 
-  type QueryParameters = {
+  interface QueryParameters {
     [key: string]: any;
-  };
+  }
 
   /**
    * An object that represents artwork.
    */
-  type Artwork = {
+  interface Artwork {
     bgColor: string;
     height: number;
     width: number;
@@ -278,5 +278,5 @@ declare namespace MusicKit {
     textColor3: string;
     textColor4: string;
     url: string;
-  };
+  }
 }

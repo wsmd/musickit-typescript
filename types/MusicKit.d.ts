@@ -93,13 +93,13 @@ declare namespace MusicKit {
     version?: string;
   }
 
-  type FormattedPlaybackDuration = {
+  interface FormattedPlaybackDuration {
     hours: number;
     minutes: number;
-  };
+  }
 
-  type EmbedOptions = {
+  interface EmbedOptions {
     height: number | string;
     width: number | string;
-  };
+  }
 }

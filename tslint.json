@@ -1,0 +1,16 @@
+{
+  "extends": "tslint:latest",
+  "linterOptions": {
+    "exclude": ["test/**", "node_modules/**"]
+  },
+  "rules": {
+    "interface-name": [true, "never-prefix"],
+    "max-classes-per-file": false,
+    "max-line-length": [true, 100],
+    "member-access": [true, "no-public"],
+    "member-ordering": false,
+    "no-namespace": false,
+    "no-reference": false,
+    "quotemark": [true, "single"]
+  }
+}

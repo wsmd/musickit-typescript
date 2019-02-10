@@ -8,10 +8,18 @@
     "url": "https://github.com/wsmd/musickit-typescript/issues"
   },
   "scripts": {
-    "test": "tsc"
+    "lint": "tslint **/*.d.ts",
+    "test": "npm run typecheck && npm run lint",
+    "typecheck": "tsc --noEmit",
+    "typecheck:dev": "tsc --noEmit --watch",
+    "prepack": "npm run test"
   },
   "author": "Waseem Dahman <dwaseem@icloud.com>",
   "license": "MIT",
+  "files": [
+    "types",
+    "NOTICE"
+  ],
   "keywords": [
     "Apple",
     "MusicKit.d.ts",
@@ -21,6 +29,7 @@
     "typings"
   ],
   "devDependencies": {
+    "tslint": "^5.12.1",
     "typescript": "^3.2.2"
   }
 }
