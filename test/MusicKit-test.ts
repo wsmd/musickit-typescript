@@ -273,3 +273,5 @@ MusicKit.formatArtworkURL({ url: 'path/to/artwork' } as MusicKit.Artwork, 300, 3
 const { hours, minutes } = MusicKit.formattedMilliseconds(3000);
 
 MusicKit.generateEmbedCode('path/to/content', { width: '400px', height: '400px' });
+
+const version: string = MusicKit.version;

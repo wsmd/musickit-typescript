@@ -1,4 +1,4 @@
-// Type definitions for MusicKit JS 1.0
+// Type definitions for MusicKit JS 1.2.3
 // Project: https://developer.apple.com/documentation/musickitjs
 // Definitions by: Waseem Dahman <https://github.com/wsmd>
 

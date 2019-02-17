@@ -1,6 +1,6 @@
 {
   "name": "musickit-typescript",
-  "version": "0.1.0",
+  "version": "1.2.3",
   "description": "Typescript type definitions for MusicKit",
   "repository": "wsmd/musickit-typescript",
   "types": "./types/index.d.ts",
