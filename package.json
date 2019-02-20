@@ -3,7 +3,7 @@
   "version": "1.2.3",
   "description": "Typescript type definitions for MusicKit",
   "repository": "wsmd/musickit-typescript",
-  "types": "./types/index.d.ts",
+  "types": "./MusicKit/index.d.ts",
   "bugs": {
     "url": "https://github.com/wsmd/musickit-typescript/issues"
   },
