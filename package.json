@@ -17,11 +17,12 @@
   "author": "Waseem Dahman <dwaseem@icloud.com>",
   "license": "MIT",
   "files": [
-    "types",
+    "MusicKit",
     "NOTICE"
   ],
   "keywords": [
     "Apple",
+    "apple-music",
     "MusicKit.d.ts",
     "MusicKit",
     "types",
